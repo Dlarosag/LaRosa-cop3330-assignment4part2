@@ -65,6 +65,49 @@ public class ControllerMain implements Initializable{
     @FXML
     private Label descrptDisplay;
 
+    @FXML
+    private Button editItem;
+
+    @FXML
+    void ItemEdit(ActionEvent event) {
+
+        try {
+
+            int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
+            int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/newItem.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+
+            ControllerItem cI = fxmlLoader.getController();
+
+            cI.newItem = allList.getList(i).getItem(j);
+
+            cI.ItemName.setText(cI.newItem.getName());
+            cI.description.setText(cI.newItem.getDescript());
+            cI.date.setText(cI.newItem.getDate());
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.showAndWait();
+
+
+
+            allList.getList(i).getItem(j).replace(cI.newItem);
+            itemView.refresh();
+            listView.refresh();
+
+
+
+
+        }
+        catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+
+    }
+
 
     @FXML
     void deleteItem(ActionEvent event) {
@@ -200,6 +243,7 @@ public class ControllerMain implements Initializable{
                     newItem.setDisable(false);
                     doneButton.setDisable(false);
                     itemDelete.setDisable(false);
+                    editItem.setDisable(false);
 
 
                         itemView.getItems().clear();

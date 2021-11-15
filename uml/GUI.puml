@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+interface MainScreen
+interface newList
+interface newItem
+interface help
+
+MainScreen <|-- newList
+MainScreen <|-- newItem
+MainScreen <|-- help
+
+
+@enduml

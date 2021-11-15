@@ -79,12 +79,12 @@
             <ChoiceBox fx:id="display" layoutX="489.0" layoutY="34.0" prefHeight="25.0" prefWidth="184.0" />
             <Text fill="WHITE" layoutX="440.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display" />
             <Line endX="-100.0" endY="56.0" layoutX="801.0" layoutY="20.0" startX="-100.0" startY="-21.0" />
-            <Text fill="WHITE" layoutX="856.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item" />
+            <Text fill="WHITE" layoutX="902.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item" />
             <Button fx:id="newItem" disable="true" layoutX="718.0" layoutY="21.0" mnemonicParsing="false" onAction="#newItemWindow" prefHeight="51.0" prefWidth="93.0" text="New Item" />
             <Button fx:id="itemDelete" disable="true" layoutX="821.0" layoutY="21.0" mnemonicParsing="false" onAction="#deleteItem" prefHeight="51.0" prefWidth="93.0" text="Delete Item" />
             <Button fx:id="doneButton" disable="true" layoutX="925.0" layoutY="21.0" mnemonicParsing="false" onAction="#setDone" prefHeight="51.0" prefWidth="93.0" text="Done" />
-            <Line endX="-100.0" endY="56.0" layoutX="1128.0" layoutY="22.0" startX="-100.0" startY="-21.0" />
-            <Button fx:id="Help" layoutX="1043.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="242.0" text="Help" />
+            <Line endX="-100.0" endY="56.0" layoutX="1236.0" layoutY="29.0" startX="-100.0" startY="-29.0" />
+            <Button fx:id="Help" layoutX="1169.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="242.0" text="Help" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#374046" height="78.0" layoutX="232.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" width="1407.0" />
             <Label fx:id="listNameDisplay" layoutX="251.0" layoutY="91.0" prefHeight="58.0" prefWidth="1372.0" textFill="WHITE">
                <font>
@@ -131,6 +131,8 @@
                   <Font size="71.0" />
                </font>
             </Label>
+            <Button fx:id="editItem" disable="true" layoutX="1027.0" layoutY="21.0" mnemonicParsing="false" onAction="#ItemEdit" prefHeight="51.0" prefWidth="93.0" text="Edit" />
+            <Text fill="WHITE" layoutX="1278.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help" />
       </children>
     </AnchorPane>
   </children>

@@ -14,13 +14,15 @@ public class ControllerItem {
     private Button Confirm;
 
     @FXML
-    private TextField date;
+    TextField date;
 
     @FXML
-    private TextField description;
+    TextField description;
 
     @FXML
-    private TextField ItemName;
+    TextField ItemName;
+
+
 
     @FXML
     void confirm(ActionEvent event) {
