@@ -82,7 +82,7 @@
             <Text fill="WHITE" layoutX="856.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item" />
             <Button fx:id="newItem" disable="true" layoutX="718.0" layoutY="21.0" mnemonicParsing="false" onAction="#newItemWindow" prefHeight="51.0" prefWidth="93.0" text="New Item" />
             <Button fx:id="itemDelete" disable="true" layoutX="821.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="Delete Item" />
-            <Button fx:id="doneButton" disable="true" layoutX="925.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="Done" />
+            <Button fx:id="doneButton" disable="true" layoutX="925.0" layoutY="21.0" mnemonicParsing="false" onAction="#setDone" prefHeight="51.0" prefWidth="93.0" text="Done" />
             <Line endX="-100.0" endY="56.0" layoutX="1128.0" layoutY="22.0" startX="-100.0" startY="-21.0" />
             <Button fx:id="Help" layoutX="1043.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="242.0" text="Help" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#374046" height="78.0" layoutX="232.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" width="1407.0" />
@@ -99,7 +99,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Label fx:id="descrptDisplay" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="547.0" layoutY="240.0" prefHeight="766.0" prefWidth="421.0" text="ihjiji" textFill="WHITE" wrapText="true">
+            <Label fx:id="descrptDisplay" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="547.0" layoutY="240.0" prefHeight="766.0" prefWidth="421.0" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="40.0" />
                </font>
@@ -121,12 +121,12 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="1043.0" layoutY="240.0" prefHeight="224.0" prefWidth="507.0" text="ihjiji" textFill="WHITE">
+            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="1043.0" layoutY="240.0" prefHeight="224.0" prefWidth="507.0" textFill="WHITE">
                <font>
                   <Font size="74.0" />
                </font>
             </Label>
-            <Label fx:id="completionDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="1073.0" layoutY="658.0" prefHeight="224.0" prefWidth="507.0" text="ihjiji" textFill="WHITE">
+            <Label fx:id="completionDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="1073.0" layoutY="658.0" prefHeight="224.0" prefWidth="507.0" textFill="WHITE">
                <font>
                   <Font size="71.0" />
                </font>

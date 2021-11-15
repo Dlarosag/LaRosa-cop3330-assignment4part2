@@ -85,6 +85,18 @@ public class ControllerMain implements Initializable{
         itemView.getItems().add(newItem.getName());
     }
 
+    @FXML
+    void setDone(ActionEvent event) {
+
+        int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
+        int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
+
+        allList.getList(i).getItem(j).done();
+        completionDisplay.setText("Done!");
+
+    }
+
+
 
     @FXML
     void newListWindow(ActionEvent event) throws IOException {
@@ -172,6 +184,7 @@ public class ControllerMain implements Initializable{
 
                     listNameDisplay.setText(allList.getList(i).getTitle());
                     newItem.setDisable(false);
+                    doneButton.setDisable(false);
 
 
                         itemView.getItems().clear();

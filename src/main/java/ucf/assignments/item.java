@@ -55,11 +55,18 @@ public class item {
 
     public  void editDescrpt(String newDescr){
 
+        if(newDescr.length() > 256 || newDescr.length() < 1)
+            return;
+
         descript = newDescr;
     }
 
     public  void editDate(String newDate){
 
+        if(newDate.length() > 9) {
+            date = "Invalid date";
+            return;
+        }
         date = newDate;
     }
 }
