@@ -12,12 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -126,7 +123,7 @@ public class ControllerMain implements Initializable{
         itemView.getItems().add(newItem.getName());
     }
 
-
+    /////////////////////// Exports a List
     @FXML
     void export(ActionEvent event) {
 
@@ -163,20 +160,15 @@ public class ControllerMain implements Initializable{
             stage.setScene(new Scene(root1));
             stage.showAndWait();
 
-
-
             File file = new File(cI.name + ".txt");
             Scanner sc = new Scanner(file);
 
             toDoList imprtList = new toDoList();
-
             imprtList.editTitle(sc.nextLine());
 
             sc.nextLine();
 
             String data;
-
-
 
             while(sc.hasNextLine()){
 
@@ -188,24 +180,19 @@ public class ControllerMain implements Initializable{
 
                 it.editName(listData[0]);
 
+                it.editDate(listData[2]);
+
                 String[] listData2 = listData[1].split("-");
 
                 it.editDescrpt(listData2[0]);
 
-                it.editDate(listData2[1]);
+                it.undo();
 
                 imprtList.addItem(it);
             }
 
             allList.addList(imprtList);
             listView.getItems().add(imprtList.getTitle());
-
-
-
-
-
-
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////  Items     //////////////////////////////////////////////////////////////////////////////////

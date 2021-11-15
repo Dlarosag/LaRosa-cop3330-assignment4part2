@@ -68,7 +68,7 @@ public class item {
 
     public  void editDate(String newDate){
 
-        if(newDate.length() > 9) {
+        if(newDate.length() > 11) {
             date = "Invalid date";
             return;
         }
