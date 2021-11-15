@@ -94,7 +94,12 @@ public class ControllerMain implements Initializable{
 
 
 
-            allList.getList(i).getItem(j).replace(cI.newItem);
+            allList.getList(i).deleteItem(j);
+            itemView.getItems().remove(j);
+
+            allList.getList(i).addItem(cI.newItem);
+            itemView.getItems().add(cI.newItem.getName());
+
             itemView.refresh();
             listView.refresh();
 
