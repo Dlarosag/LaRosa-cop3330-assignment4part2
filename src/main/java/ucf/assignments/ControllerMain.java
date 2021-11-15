@@ -12,9 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -137,7 +141,7 @@ public class ControllerMain implements Initializable{
 
                 wr.write(allList.getList(i).getItem(j).getName() +
                         ": " + allList.getList(i).getItem(j).getDescript() +
-                        "--- To-Do Date:" + allList.getList(i).getItem(j).getDate() +
+                        "- To-Do Date:" + allList.getList(i).getItem(j).getDate() +
                         "\n");
             }
 
@@ -148,7 +152,57 @@ public class ControllerMain implements Initializable{
     }
 
     @FXML
-    void listImport(ActionEvent event) {
+    void listImport(ActionEvent event) throws IOException {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/importList.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+
+            ControllerImport cI = fxmlLoader.getController();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.showAndWait();
+
+
+
+            File file = new File(cI.name + ".txt");
+            Scanner sc = new Scanner(file);
+
+            toDoList imprtList = new toDoList();
+
+            imprtList.editTitle(sc.nextLine());
+
+            sc.nextLine();
+
+            String data;
+
+
+
+            while(sc.hasNextLine()){
+
+                item it = new item();
+
+                data = sc.nextLine();
+
+               String[] listData = data.split(":");
+
+                it.editName(listData[0]);
+
+                String[] listData2 = listData[1].split("-");
+
+                it.editDescrpt(listData2[0]);
+
+                it.editDate(listData2[1]);
+
+                imprtList.addItem(it);
+            }
+
+            allList.addList(imprtList);
+            listView.getItems().add(imprtList.getTitle());
+
+
+
+
 
 
 
