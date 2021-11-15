@@ -24,6 +24,11 @@ public class item {
        complete = true;
    }
 
+    public  void undo(){
+
+        complete = false;
+    }
+
     public  boolean isDone(){
 
        if(complete)

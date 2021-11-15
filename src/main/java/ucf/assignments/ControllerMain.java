@@ -151,8 +151,17 @@ public class ControllerMain implements Initializable{
         int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
         int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
 
-        allList.getList(i).getItem(j).done();
-        completionDisplay.setText("Done!");
+        if(allList.getList(i).getItem(j).isDone()){
+
+            allList.getList(i).getItem(j).undo();
+            completionDisplay.setText("To Do");
+        }
+
+        else{
+
+            allList.getList(i).getItem(j).done();
+            completionDisplay.setText("Done!");
+        }
 
     }
 
@@ -257,11 +266,11 @@ public class ControllerMain implements Initializable{
 
         showDisplay.addAll("To-Do", "All", "Completed");
         display.getItems().addAll(showDisplay);
-        display.getSelectionModel().select(0);
+        display.getSelectionModel().select(1);
+
 
 
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -286,16 +295,36 @@ public class ControllerMain implements Initializable{
                     editItem.setDisable(false);
                     deleteAll.setDisable(false);
 
+                    itemView.getItems().clear();
 
-                        itemView.getItems().clear();
+                    if(allList.getList(i).getAmtItems() > -1) {
 
-                        for (int j = 0; j < allList.getList(i).getAmtItems(); j++) {
-                            itemView.getItems().add(allList.getList(i).getItem(j).getName());
+                            for (int j = 0; j < allList.getList(i).getAmtItems(); j++) {
+
+
+                                if (display.getValue().contentEquals("To-Do"))
+                                    if (!allList.getList(i).getItem(j).isDone())
+                                        itemView.getItems().add(allList.getList(i).getItem(j).getName());
+
+                                if (display.getValue().contentEquals("Completed"))
+                                    if (allList.getList(i).getItem(j).isDone())
+                                        itemView.getItems().add(allList.getList(i).getItem(j).getName());
+
+                                if (display.getValue().contentEquals("All"))
+                                    itemView.getItems().add(allList.getList(i).getItem(j).getName());
+                            }
+
+
+
+
+
+
                     }
-
                 }
             }
         });
+
+
 
         itemView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -307,7 +336,7 @@ public class ControllerMain implements Initializable{
 
                 int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
 
-                System.out.println(j);
+
 
                 if(j > -1) {
 
@@ -332,6 +361,12 @@ public class ControllerMain implements Initializable{
             }
 
         });
+
+
+
+
+
+
 
 
     }
