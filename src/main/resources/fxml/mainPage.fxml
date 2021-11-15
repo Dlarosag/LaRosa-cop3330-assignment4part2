@@ -64,7 +64,7 @@
                   </ContextMenu>
                </contextMenu></Button>
             <Button fx:id="saveList" layoutX="110.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="Save" />
-            <Button fx:id="exportList" layoutX="214.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="Export" />
+            <Button fx:id="exportList" layoutX="214.0" layoutY="21.0" mnemonicParsing="false" onAction="#export" prefHeight="51.0" prefWidth="93.0" text="Export" />
             <ScrollPane layoutX="10.0" layoutY="83.0" prefHeight="921.0" prefWidth="207.0">
               <content>
                 <AnchorPane fx:id="sideListDisplay" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
@@ -73,7 +73,7 @@
                      </children></AnchorPane>
               </content>
             </ScrollPane>
-            <Button fx:id="importList" layoutX="317.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="Import" />
+            <Button fx:id="importList" layoutX="317.0" layoutY="21.0" mnemonicParsing="false" onAction="#listImport" prefHeight="51.0" prefWidth="93.0" text="Import" />
             <Line endX="-100.0" endY="56.0" layoutX="525.0" layoutY="21.0" startX="-100.0" startY="-21.0" />
             <Text fill="WHITE" layoutX="556.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View" />
             <ChoiceBox fx:id="display" layoutX="489.0" layoutY="34.0" prefHeight="25.0" prefWidth="184.0" />

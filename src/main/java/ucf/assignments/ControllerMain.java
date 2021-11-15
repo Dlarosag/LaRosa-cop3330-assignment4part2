@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.io.FileWriter;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -118,6 +120,38 @@ public class ControllerMain implements Initializable{
         int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
         allList.getList(i).addItem(newItem);
         itemView.getItems().add(newItem.getName());
+    }
+
+
+    @FXML
+    void export(ActionEvent event) {
+
+        try {
+
+            int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
+            FileWriter wr = new FileWriter(allList.getList(i).getTitle() + ".txt");
+            wr.write(allList.getList(i).getTitle() + "\n\n");
+
+            for(int j = 0; j < allList.getList(i).getAmtItems(); j++){
+
+
+                wr.write(allList.getList(i).getItem(j).getName() +
+                        ": " + allList.getList(i).getItem(j).getDescript() +
+                        "--- To-Do Date:" + allList.getList(i).getItem(j).getDate() +
+                        "\n");
+            }
+
+            wr.close();
+        }
+
+        catch(Exception e){}
+    }
+
+    @FXML
+    void listImport(ActionEvent event) {
+
+
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////  Items     //////////////////////////////////////////////////////////////////////////////////
