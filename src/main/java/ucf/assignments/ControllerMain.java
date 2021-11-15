@@ -92,8 +92,6 @@ public class ControllerMain implements Initializable{
             stage.setScene(new Scene(root1));
             stage.showAndWait();
 
-
-
             allList.getList(i).deleteItem(j);
             itemView.getItems().remove(j);
 
@@ -102,10 +100,6 @@ public class ControllerMain implements Initializable{
 
             itemView.refresh();
             listView.refresh();
-
-
-
-
         }
         catch (Exception e){
             System.err.println(e.getMessage());
@@ -125,6 +119,10 @@ public class ControllerMain implements Initializable{
 
             allList.getList(i).deleteItem(j);
         }catch (Exception e){}
+
+        descrptDisplay.setText("");
+        dateDisplay.setText("");
+        completionDisplay.setText("");
     }
 
 
@@ -155,6 +153,43 @@ public class ControllerMain implements Initializable{
 
         allList.getList(i).getItem(j).done();
         completionDisplay.setText("Done!");
+
+    }
+
+    @FXML
+    void openHelp(ActionEvent event) throws IOException {
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/help.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.showAndWait();
+
+    }
+
+    @FXML
+    private Button deleteAll;
+
+    @FXML
+    void clearAll(ActionEvent event) {
+
+        try {
+            int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
+
+
+            for (int j = 0; j < itemView.getItems().size(); j++) {
+
+                allList.getList(i).deleteItem(0);
+            }
+
+            itemView.getItems().clear();
+        }catch(Exception e){}
+
+        descrptDisplay.setText("");
+        dateDisplay.setText("");
+        completionDisplay.setText("");
 
     }
 
@@ -249,6 +284,7 @@ public class ControllerMain implements Initializable{
                     doneButton.setDisable(false);
                     itemDelete.setDisable(false);
                     editItem.setDisable(false);
+                    deleteAll.setDisable(false);
 
 
                         itemView.getItems().clear();
