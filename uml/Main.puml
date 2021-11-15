@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class listofList
+class list
+class item
+
+
+list <|-- listofList
+item <|-- list
+
+
+class listofList {
+
+ listAt: list[]
+
+addList()
+deleteList()
+getList()
+isEmpty()
+
+exportOne()
+exportAll()
+
+importOne()
+importAll()
+}
+
+class list {
+
+listTitle: String
+toDo: item[]
+
+addItem()
+deleteItem()
+isEmpty()
+getItem()
+editTitle()
+
+getTitle()
+
+displayAll()
+displayDone()
+displayToDo()
+}
+
+class item {
+
+complete: bool
+name: String
+descript: String
+date: String
+
+done()
+
+isDone()
+getName()
+getDescript()
+getDate()
+
+editName()
+editDescrpt()
+editDate()
+
+
+
+}
+
+
+@enduml
