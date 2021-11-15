@@ -67,6 +67,20 @@ public class ControllerMain implements Initializable{
 
 
     @FXML
+    void deleteItem(ActionEvent event) {
+
+        try {
+            int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
+            int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
+
+            itemView.getItems().remove(j);
+
+            allList.getList(i).deleteItem(j);
+        }catch (Exception e){}
+    }
+
+
+    @FXML
     private ListView<String> listView;
 
     void addList(toDoList newList){
@@ -185,6 +199,7 @@ public class ControllerMain implements Initializable{
                     listNameDisplay.setText(allList.getList(i).getTitle());
                     newItem.setDisable(false);
                     doneButton.setDisable(false);
+                    itemDelete.setDisable(false);
 
 
                         itemView.getItems().clear();
