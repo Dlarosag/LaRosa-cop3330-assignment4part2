@@ -22,8 +22,6 @@ public class ControllerItem {
     @FXML
     TextField ItemName;
 
-
-
     @FXML
     void confirm(ActionEvent event) {
 
