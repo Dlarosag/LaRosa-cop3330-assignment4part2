@@ -57,6 +57,8 @@ public class ControllerMain implements Initializable{
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.showAndWait();
+
+            /// Gets the list and adds it to allList
             addList(cl.newList);
         }
         catch (Exception e){}
@@ -85,14 +87,17 @@ public class ControllerMain implements Initializable{
     void deleteItem(ActionEvent event) {
 
         try {
+            ///Gets the current list and item index
             int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
             int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
 
+            //remove the item
             itemView.getItems().remove(j);
-
             allList.getList(i).deleteItem(j);
+
         }catch (Exception e){}
 
+        ///Clean up
         descrptDisplay.setText("");
         dateDisplay.setText("");
         completionDisplay.setText("");
@@ -114,6 +119,7 @@ public class ControllerMain implements Initializable{
 
         }catch(Exception e){}
 
+        ///Clean up
         descrptDisplay.setText("");
         dateDisplay.setText("");
         completionDisplay.setText("");
@@ -132,13 +138,13 @@ public class ControllerMain implements Initializable{
     void export(ActionEvent event) {
 
         try {
-
+            /// Gets the list to export and create the file
             int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
             FileWriter wr = new FileWriter(allList.getList(i).getTitle() + ".txt");
             wr.write(allList.getList(i).getTitle() + "\n\n");
 
+            /// Prints into the file
             for(int j = 0; j < allList.getList(i).getAmtItems(); j++){
-
 
                 wr.write(allList.getList(i).getItem(j).getName() +
                         ": " + allList.getList(i).getItem(j).getDescript() +
@@ -152,9 +158,11 @@ public class ControllerMain implements Initializable{
         catch(Exception e){}
     }
 
+    /////////////////////// Import a List
     @FXML
     void listImport(ActionEvent event) throws IOException {
 
+            /////Opens the import window, which gets the name of the file to be imported
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/importList.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
 
@@ -167,6 +175,7 @@ public class ControllerMain implements Initializable{
             File file = new File(cI.name + ".txt");
             Scanner sc = new Scanner(file);
 
+            //Start scanning and building the list
             toDoList imprtList = new toDoList();
             imprtList.editTitle(sc.nextLine());
 
@@ -195,6 +204,7 @@ public class ControllerMain implements Initializable{
                 imprtList.addItem(it);
             }
 
+            //// Adds the list
             allList.addList(imprtList);
             listView.getItems().add(imprtList.getTitle());
     }
@@ -244,9 +254,11 @@ public class ControllerMain implements Initializable{
     @FXML
     void setDone(ActionEvent event) {
 
+        ///Gets list and item index
         int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
         int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
 
+        ///Set done/undone
         if(allList.getList(i).getItem(j).isDone()){
 
             allList.getList(i).getItem(j).undo();
@@ -258,7 +270,6 @@ public class ControllerMain implements Initializable{
             allList.getList(i).getItem(j).done();
             completionDisplay.setText("Done!");
         }
-
     }
 
     ////////////////////// Open the edit item window and allows user to edit item
@@ -266,15 +277,17 @@ public class ControllerMain implements Initializable{
     void ItemEdit(ActionEvent event) {
 
         try {
-
+            ///Gets list and item index
             int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
             int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
 
+            ///Open the window to edit
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/newItem.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
 
             ControllerItem cI = fxmlLoader.getController();
 
+            //Sets the data to be edited
             cI.newItem = allList.getList(i).getItem(j);
 
             cI.ItemName.setText(cI.newItem.getName());
@@ -285,6 +298,7 @@ public class ControllerMain implements Initializable{
             stage.setScene(new Scene(root1));
             stage.showAndWait();
 
+            /// Updates the item to the edited values
             allList.getList(i).deleteItem(j);
             itemView.getItems().remove(j);
 
@@ -362,34 +376,35 @@ public class ControllerMain implements Initializable{
                     ////////////// Fills the display list with objects depending on the choice box
                     if(allList.getList(i).getAmtItems() > -1) {
 
-                            for (int j = 0; j < allList.getList(i).getAmtItems(); j++) {
+                        for (int j = 0; j < allList.getList(i).getAmtItems(); j++) {
 
-                                if (display.getValue().contentEquals("To-Do"))
-                                    if (!allList.getList(i).getItem(j).isDone())
-                                        itemView.getItems().add(allList.getList(i).getItem(j).getName());
-
-                                if (display.getValue().contentEquals("Completed"))
-                                    if (allList.getList(i).getItem(j).isDone())
-                                        itemView.getItems().add(allList.getList(i).getItem(j).getName());
-
-                                if (display.getValue().contentEquals("All"))
+                            if (display.getValue().contentEquals("To-Do"))
+                                if (!allList.getList(i).getItem(j).isDone())
                                     itemView.getItems().add(allList.getList(i).getItem(j).getName());
-                            }
+
+                            if (display.getValue().contentEquals("Completed"))
+                                if (allList.getList(i).getItem(j).isDone())
+                                    itemView.getItems().add(allList.getList(i).getItem(j).getName());
+
+                            if (display.getValue().contentEquals("All"))
+                                itemView.getItems().add(allList.getList(i).getItem(j).getName());
+                        }
                     }
                 }
             }
         });
 
-        /////////////////////// Overview the item Lis
+        /////////////////////// Overview the item List
         itemView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
 
                 try{
-
+                    ///Gets the list and item index
                     int i = allList.findListIndex(listView.getSelectionModel().getSelectedItem());
                     int j = allList.getList(i).findItemIndex(itemView.getSelectionModel().getSelectedItem());
 
+                    //Ensures that the item exist and then display its values
                     if(j > -1) {
 
                         descrptDisplay.setText(allList.getList(i).getItem(j).getDescript());
@@ -400,7 +415,6 @@ public class ControllerMain implements Initializable{
 
                         else
                             completionDisplay.setText("To Do");
-
                     }
 
                 }catch(Exception e){}
