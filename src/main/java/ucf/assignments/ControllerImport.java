@@ -1,3 +1,7 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 David La Rosa Giraud
+ */
 package ucf.assignments;
 
 import javafx.event.ActionEvent;
@@ -23,7 +27,5 @@ public class ControllerImport {
 
         Stage stage = (Stage) confirm.getScene().getWindow();
         stage.close();
-
     }
-
 }

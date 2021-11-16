@@ -10,7 +10,6 @@ public class listOfList {
 
     private ArrayList<toDoList> arr = new ArrayList<toDoList>();
 
-
     public  void addList(toDoList newToDoList){
 
         arr.add(newToDoList);

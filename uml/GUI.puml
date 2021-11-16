@@ -14,5 +14,19 @@ MainScreen <|-- newItem
 
 MainScreen <|-- Import
 
+class launcher{
+
+start()
+}
+
+interface MainScreen{
+
+newListWindow()
+newItemWindow()
+listImport()
+openHelp()
+
+}
+
 
 @enduml
