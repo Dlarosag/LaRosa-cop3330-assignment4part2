@@ -2,12 +2,12 @@
 'https://plantuml.com/class-diagram
 
 class listofList
-class list
+class toDoList
 class item
 
 
-list <|-- listofList
-item <|-- list
+toDoList <|-- item
+listofList <|-- toDoList
 
 
 class listofList {
@@ -15,33 +15,24 @@ class listofList {
  listAt: list[]
 
 addList()
-deleteList()
 getList()
-isEmpty()
-
-exportOne()
-exportAll()
-
-importOne()
-importAll()
+findListIndex()
 }
 
-class list {
+class toDoList {
 
 listTitle: String
 toDo: item[]
 
 addItem()
 deleteItem()
-isEmpty()
 getItem()
+getAmtItems()
 editTitle()
 
 getTitle()
 
-displayAll()
-displayDone()
-displayToDo()
+findItemIndex()
 }
 
 class item {
@@ -51,7 +42,10 @@ name: String
 descript: String
 date: String
 
+item()
+
 done()
+undo()
 
 isDone()
 getName()
@@ -61,8 +55,6 @@ getDate()
 editName()
 editDescrpt()
 editDate()
-
-
 
 }
 

@@ -5,10 +5,14 @@ interface MainScreen
 interface newList
 interface newItem
 interface help
+interface Import
+class launcher
 
+MainScreen <|- launcher
 MainScreen <|-- newList
 MainScreen <|-- newItem
-MainScreen <|-- help
+
+MainScreen <|-- Import
 
 
 @enduml
