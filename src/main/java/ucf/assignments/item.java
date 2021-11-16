@@ -74,9 +74,4 @@ public class item {
         }
         date = newDate;
     }
-
-    public  void replace(item it) {
-
-        item(it.getName(), it.getDescript(), it.getDate());
-    }
 }
