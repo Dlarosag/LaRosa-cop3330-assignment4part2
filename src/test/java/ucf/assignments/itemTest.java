@@ -10,7 +10,6 @@ class itemTest {
     item it = new item();
 
     @Test
-    @DisplayName("Test constructor")
     void item() {
 
         it.item("shopping", "Go to the superMarket", "2021/12/02");
@@ -22,7 +21,6 @@ class itemTest {
     }
 
     @Test
-    @DisplayName("Set an item completion to true")
     void done() {
 
         assertFalse(it.isDone());
@@ -33,7 +31,6 @@ class itemTest {
     }
 
     @Test
-    @DisplayName("Set an item completion to true")
     void undo() {
 
         it.done();
